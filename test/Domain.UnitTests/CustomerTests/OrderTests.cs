@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Bogus;
 using Bogus.DataSets;
+using Domain.Entities;
 using Domain.UnitTests._Builders;
 using Domain.UnitTests._Common;
 using ExpectedObjects;
@@ -70,40 +70,5 @@ namespace Domain.UnitTests.CustomerTests
             Assert.Throws<ArgumentException>(() => OrderBuilder.New().WithItems(null).Build()).WithMessage(ExceptionMessage.DOMAIN_ORDER_ITEMS_INVALID);
         }
 
-    }
-
-    public class Order
-    {
-        public Order(string description, int customerId, List<OrderItem> items)
-        {
-            if (string.IsNullOrWhiteSpace(description))
-                throw new ArgumentException(ExceptionMessage.DOMAIN_ORDER_DESCRIPTION_INVALID);
-
-            if (customerId <= 0)
-                throw new ArgumentException(ExceptionMessage.DOMAIN_ORDER_CUSTOMER_ID_INVALID);
-
-            if (items == null || !items.Any())
-                throw new ArgumentException(ExceptionMessage.DOMAIN_ORDER_ITEMS_INVALID);
-
-
-
-            Description = description;
-            CreatedDate = DateTime.Now;
-            CustomerId = customerId;
-
-            if (Items == null)
-                items = new List<OrderItem>();
-
-            Items = items;
-        }
-
-        public string Description { get; }
-        public DateTime CreatedDate { get; }
-
-
-        public int CustomerId { get; }
-        public Customer Customer { get; }
-
-        public List<OrderItem> Items { get; private set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Bogus;
+using Domain.Entities;
 using Domain.UnitTests.CustomerTests;
 
 namespace Domain.UnitTests._Builders

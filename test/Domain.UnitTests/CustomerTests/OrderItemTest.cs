@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Bogus;
+using Domain.Entities;
 using Domain.UnitTests._Builders;
 using Domain.UnitTests._Common;
 using ExpectedObjects;
@@ -50,24 +51,6 @@ namespace Domain.UnitTests.CustomerTests
         public void order_item_price_should_not_be_less_than_zero(double price)
         {
             Assert.Throws<ArgumentException>(() => OrderItemBuilder.New().WithPrice(price).Build()).WithMessage(ExceptionMessage.DOMAIN_ORDER_ITEM_PRICE_INVALID);
-        }
-    }
-
-    public class OrderItem
-    {
-        public int Amount { get; }
-        public double Price { get; }
-
-        public OrderItem(int amount, double price)
-        {
-            if(amount <= 0)
-                throw new ArgumentException(ExceptionMessage.DOMAIN_ORDER_ITEM_AMOUNT_INVALID);
-
-            if(price < 0)
-                throw new ArgumentException(ExceptionMessage.DOMAIN_ORDER_ITEM_PRICE_INVALID);
-
-            Amount = amount;
-            Price = price;
         }
     }
 }
