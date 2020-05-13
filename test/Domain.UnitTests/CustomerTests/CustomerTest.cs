@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Bogus;
 using Domain.UnitTests._Builders;
 using Domain.UnitTests._Common;
@@ -62,9 +63,6 @@ namespace Domain.UnitTests.CustomerTests
 
     public class Customer
     {
-        public string Name { get; }
-        public string Email { get; }
-
         public Customer(string name, string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -75,6 +73,13 @@ namespace Domain.UnitTests.CustomerTests
 
             Name = name;
             Email = email;
+            Orders = new List<Order>();
         }
+
+
+        public string Name { get; }
+        public string Email { get; }
+
+        public List<Order> Orders { get; private set; } //todo test this?
     }
 }
