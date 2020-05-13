@@ -35,6 +35,7 @@ namespace Domain.UnitTests.CustomerTests
 
         }
 
+
         [Theory]
         [InlineData("")]
         [InlineData(" ")]
@@ -42,7 +43,7 @@ namespace Domain.UnitTests.CustomerTests
         [InlineData(null)]
         public void customer_email_should_not_be_null_or_empty(string email)
         {
-            Assert.Throws<ArgumentException>(() => new CustomerBuilder().WithEmail(email).Build()).WithMessage(ExceptionMessage.DOMAIN_CUSTOMER_EMAIL_INVALID);
+            Assert.Throws<ArgumentException>(() => CustomerBuilder.New().WithEmail(email).Build()).WithMessage(ExceptionMessage.DOMAIN_CUSTOMER_EMAIL_INVALID);
         }
 
 
@@ -53,7 +54,7 @@ namespace Domain.UnitTests.CustomerTests
         [InlineData(null)]
         public void customer_name_should_not_be_null_or_empty(string name)
         {
-            Assert.Throws<ArgumentException>(() => new CustomerBuilder().WithName(name).Build()).WithMessage(ExceptionMessage.DOMAIN_CUSTOMER_NAME_INVALID);
+            Assert.Throws<ArgumentException>(() => CustomerBuilder.New().WithName(name).Build()).WithMessage(ExceptionMessage.DOMAIN_CUSTOMER_NAME_INVALID);
         }
     }
 
