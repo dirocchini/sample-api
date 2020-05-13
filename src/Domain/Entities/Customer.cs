@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Domain.Interfaces;
 using Shared.Constants;
 
 namespace Domain.Entities
 {
-    public class Customer
+    public class Customer : IEntity
     {
         public Customer(string name, string email)
         {
@@ -16,9 +17,16 @@ namespace Domain.Entities
 
             Name = name;
             Email = email;
-            Orders = new List<Order>();
         }
 
+        public void AddOrder(Order order)
+        {
+            Orders ??= new List<Order>();
+            Orders.Add(order);
+        }
+
+
+        public int Id { get; }
 
         public string Name { get; }
         public string Email { get; }

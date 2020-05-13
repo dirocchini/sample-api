@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Bogus;
 using Domain.Entities;
-using Domain.UnitTests.CustomerTests;
 
 namespace Domain.UnitTests._Builders
 {

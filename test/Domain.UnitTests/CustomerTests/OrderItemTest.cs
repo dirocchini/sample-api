@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Bogus;
 using Domain.Entities;
 using Domain.UnitTests._Builders;
 using Domain.UnitTests._Common;
 using ExpectedObjects;
-using Newtonsoft.Json.Serialization;
 using Shared.Constants;
 using Xunit;
 

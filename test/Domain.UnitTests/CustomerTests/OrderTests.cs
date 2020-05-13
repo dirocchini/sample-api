@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
 using Bogus;
-using Bogus.DataSets;
 using Domain.Entities;
 using Domain.UnitTests._Builders;
 using Domain.UnitTests._Common;
-using ExpectedObjects;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client.Interfaces;
 using Shared.Constants;
 using Xunit;
 
@@ -58,7 +53,6 @@ namespace Domain.UnitTests.CustomerTests
         [Theory]
         [InlineData(-1)]
         [InlineData(0)]
-        [InlineData(null)]
         public void order_customer_id_should_not_be_zero_or_null_or_less_than_zero(int customerId)
         {
             Assert.Throws<ArgumentException>(() => OrderBuilder.New().WithCustomerId(customerId).Build()).WithMessage(ExceptionMessage.DOMAIN_ORDER_CUSTOMER_ID_INVALID);

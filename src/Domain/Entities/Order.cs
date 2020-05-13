@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Domain.Interfaces;
 using Shared.Constants;
 
 namespace Domain.Entities
 {
-    public class Order
+    public class Order : IEntity
     {
         public Order(string description, int customerId, List<OrderItem> items)
         {
@@ -28,7 +29,10 @@ namespace Domain.Entities
                 items = new List<OrderItem>();
 
             Items = items;
+        
         }
+
+        public int Id { get; }
 
         public string Description { get; }
         public DateTime CreatedDate { get; }
@@ -37,6 +41,6 @@ namespace Domain.Entities
         public int CustomerId { get; }
         public Customer Customer { get; }
 
-        public List<OrderItem> Items { get; private set; }
+        public List<OrderItem> Items { get; }
     }
 }
