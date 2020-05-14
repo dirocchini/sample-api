@@ -8,6 +8,8 @@ namespace Domain.Entities
 {
     public class Order : IEntity
     {
+        protected Order() { }
+
         public Order(string description, int customerId, List<OrderItem> items)
         {
             if (string.IsNullOrWhiteSpace(description))

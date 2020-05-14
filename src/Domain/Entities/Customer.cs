@@ -7,6 +7,8 @@ namespace Domain.Entities
 {
     public class Customer : IEntity
     {
+        protected Customer() { }
+
         public Customer(string name, string email)
         {
             if (string.IsNullOrWhiteSpace(email))

@@ -6,6 +6,7 @@ namespace Domain.Entities
 {
     public class OrderItem : IEntity
     {
+        protected OrderItem() { }
 
         public OrderItem(int amount, double price)
         {
