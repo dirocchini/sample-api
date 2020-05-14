@@ -4,20 +4,6 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Migrations\**" />
-    <EmbeddedResource Remove="Migrations\**" />
-    <None Remove="Migrations\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Migrations\20200514131400_Initial.cs" />
-    <Compile Include="Migrations\20200514131400_Initial.designer.cs" />
-    <Compile Include="Migrations\20200514145141_Added-Values-to-Tests.cs" />
-    <Compile Include="Migrations\20200514145141_Added-Values-to-Tests.designer.cs" />
-    <Compile Include="Migrations\ApplicationContextSqlServerModelSnapshot.cs" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3">

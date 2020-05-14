@@ -122,6 +122,10 @@ namespace Persistence.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<string>("Sku")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
@@ -134,21 +138,32 @@ namespace Persistence.Migrations
                             Id = 1,
                             Amount = 2,
                             OrderId = 1,
-                            Price = 2235.3000000000002
+                            Price = 2235.3000000000002,
+                            Sku = "SKU23654"
                         },
                         new
                         {
                             Id = 2,
                             Amount = 5,
                             OrderId = 1,
-                            Price = 127.33
+                            Price = 127.33,
+                            Sku = "SKU235884"
                         },
                         new
                         {
                             Id = 3,
                             Amount = 7,
                             OrderId = 2,
-                            Price = 17.390000000000001
+                            Price = 17.390000000000001,
+                            Sku = "SKU235884-66"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Amount = 2,
+                            OrderId = 3,
+                            Price = 119.39,
+                            Sku = "SKU5884-5"
                         });
                 });
 

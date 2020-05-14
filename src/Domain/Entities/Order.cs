@@ -28,7 +28,7 @@ namespace Domain.Entities
             CustomerId = customerId;
 
             if (Items == null)
-                items = new List<OrderItem>();
+                Items = new List<OrderItem>();
 
             Items = items;
         
