@@ -13,5 +13,6 @@
 
         public static string DOMAIN_ORDER_ITEM_AMOUNT_INVALID = "Order item amount should not be less or equal to zero";
         public static string DOMAIN_ORDER_ITEM_PRICE_INVALID = "Order item price should not be less than zero";
+        public static string DOMAIN_ORDER_ITEM_SKU_INVALID = "Order item sku should not be empty";
     }
 }

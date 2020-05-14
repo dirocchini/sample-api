@@ -7,6 +7,7 @@ namespace Domain.UnitTests._Builders
     {
         private int _amount = new Faker().Random.Int(1, 5000);
         private double _price = new Faker().Random.Double(0, 25000);
+        private string _sku = new Faker().Random.Word();
 
         public static OrderItemBuilder New()
         {
@@ -25,9 +26,15 @@ namespace Domain.UnitTests._Builders
             return this;
         }
 
+        public OrderItemBuilder WithSku(string sku)
+        {
+            _sku = sku;
+            return this;
+        }
+
         public OrderItem Build()
         {
-            return new OrderItem(_amount, _price);
+            return new OrderItem(_amount, _price, _sku);
         }
     }
 }

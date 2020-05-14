@@ -8,7 +8,7 @@ namespace Domain.Entities
     {
         protected OrderItem() { }
 
-        public OrderItem(int amount, double price)
+        public OrderItem(int amount, double price, string sku)
         {
             if (amount <= 0)
                 throw new ArgumentException(ExceptionMessage.DOMAIN_ORDER_ITEM_AMOUNT_INVALID);
@@ -16,14 +16,19 @@ namespace Domain.Entities
             if (price < 0)
                 throw new ArgumentException(ExceptionMessage.DOMAIN_ORDER_ITEM_PRICE_INVALID);
 
+            if(string.IsNullOrWhiteSpace(sku))
+                throw new ArgumentException(ExceptionMessage.DOMAIN_ORDER_ITEM_SKU_INVALID);
+
+
             Amount = amount;
             Price = price;
+            Sku = sku;
         }
 
         public int Id { get; }
 
+        public string Sku { get; }
         public int Amount { get; }
         public double Price { get; }
-
     }
 }
