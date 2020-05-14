@@ -13,12 +13,14 @@ namespace Domain.UnitTests.CustomerTests
     {
         private readonly int _amount;
         private readonly double _price;
+        private readonly string _sku;
 
         public OrderItemTest()
         {
             var faker = new Faker();
             _amount = faker.Random.Int(1, 5000);
             _price = faker.Random.Double(0, 25000);
+            _sku = faker.Random.Word();
         }
 
         [Fact]
@@ -27,10 +29,11 @@ namespace Domain.UnitTests.CustomerTests
             var expectedItem = new
             {
                 Amount = _amount,
-                Price = _price
+                Price = _price,
+                Sku = _sku
             };
 
-            var item = new OrderItem(expectedItem.Amount, expectedItem.Price);
+            var item = new OrderItem(expectedItem.Amount, expectedItem.Price, expectedItem.Sku);
             expectedItem.ToExpectedObject().ShouldMatch(item);
         }
 
@@ -48,6 +51,15 @@ namespace Domain.UnitTests.CustomerTests
         public void order_item_price_should_not_be_less_than_zero(double price)
         {
             Assert.Throws<ArgumentException>(() => OrderItemBuilder.New().WithPrice(price).Build()).WithMessage(ExceptionMessage.DOMAIN_ORDER_ITEM_PRICE_INVALID);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("   ")]
+        [InlineData(null)]
+        public void order_sku_should_not_be_empty(string sku)
+        {
+            Assert.Throws<ArgumentException>(() => OrderItemBuilder.New().WithSku(sku).Build()).WithMessage(ExceptionMessage.DOMAIN_ORDER_ITEM_SKU_INVALID);
         }
     }
 }
