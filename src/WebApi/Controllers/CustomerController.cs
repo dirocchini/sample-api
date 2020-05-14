@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
+using Application.Customers.Commands.AddNewCustomer;
 using Application.Customers.Queries.GetAllCustomersWithOrders;
 using Application.Customers.Queries.GetAllCustomersWithoutOrders;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace WebApi.Controllers
 {
@@ -23,6 +25,16 @@ namespace WebApi.Controllers
             var model = await Mediator.Send(new GetAllCustomerWithOrdersQuery());
 
             return Ok(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddNewCustomer([FromBody]AddNewCustomerCommand request)
+        {
+            var response = await Mediator.Send(request);
+            if (!string.IsNullOrWhiteSpace(response))
+                return BadRequest(response);
+
+            return Created("AddNewCustomer", new { });
         }
     }
 }
