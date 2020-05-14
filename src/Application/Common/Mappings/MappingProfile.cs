@@ -2,6 +2,8 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Application.Orders.Commands.AddNewOrder;
+using Domain.Entities;
 
 namespace Application.Common.Mappings
 {
@@ -13,6 +15,9 @@ namespace Application.Common.Mappings
 
             CreateMap<string, string>()
                 .ConvertUsing(str => string.IsNullOrEmpty(str) ? "-" : str);
+
+            CreateMap<AddNewOrderCommand, Order>();
+            CreateMap<NewOrderItem, OrderItem>();
         }
 
         private void ApplyMappingsFromAssembly(Assembly assembly)

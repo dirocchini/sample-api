@@ -32,6 +32,7 @@ namespace WebApi
                 {
                     fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                     fv.RegisterValidatorsFromAssemblyContaining<IValidationModel>();
+                    fv.ImplicitlyValidateChildProperties = true;
                 });
             services.AddPersistence(Configuration);
             services.AddApplication(Configuration);
