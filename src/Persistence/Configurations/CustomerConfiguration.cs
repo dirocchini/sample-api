@@ -37,10 +37,21 @@ namespace Persistence.Configurations
             builder.HasData(new
             {
                 Id = 1,
-                Name = "Best Customer Ever",
-                Email = "email_me@domain.com"
-            });
-
+                Name = "Dorothy",
+                Email = "dorothy@domain.com"
+            },
+            new
+            {
+                Id = 2,
+                Name = "Annmarie",
+                Email = "annmarie@domain.com"
+            }, new
+            {
+                Id = 3,
+                Name = "Ashley",
+                Email = "ashley@domain.com"
+            }
+            );
         }
     }
 }
