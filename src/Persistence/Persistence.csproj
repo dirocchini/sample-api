@@ -15,6 +15,12 @@
     <Compile Include="Migrations\20200514131400_Initial.designer.cs" />
     <Compile Include="Migrations\20200514145141_Added-Values-to-Tests.cs" />
     <Compile Include="Migrations\20200514145141_Added-Values-to-Tests.designer.cs" />
+    <Compile Include="Migrations\20200514174857_Added-sku-to-order-item.cs" />
+    <Compile Include="Migrations\20200514174857_Added-sku-to-order-item.designer.cs" />
+    <Compile Include="Migrations\20200514181421_Correcting-seed-relation.cs" />
+    <Compile Include="Migrations\20200514181421_Correcting-seed-relation.designer.cs" />
+    <Compile Include="Migrations\20200514182757_adding-more-items-to-orders.cs" />
+    <Compile Include="Migrations\20200514182757_adding-more-items-to-orders.designer.cs" />
     <Compile Include="Migrations\ApplicationContextSqlServerModelSnapshot.cs" />
   </ItemGroup>
 

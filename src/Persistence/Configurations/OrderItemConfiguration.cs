@@ -15,6 +15,11 @@ namespace Persistence.Configurations
                 .HasKey(e => e.Id);
 
             builder
+                .Property(e => e.Sku)
+                .IsRequired()
+                .HasColumnType("varchar(50)");
+
+            builder
                 .Property(e => e.Amount)
                 .IsRequired()
                 .HasColumnType("integer");
@@ -48,6 +53,14 @@ namespace Persistence.Configurations
                 Amount = 7,
                 Price = 17.39,
                 OrderId = 2
+            },
+            new
+            {
+                Id = 4,
+                Sku = "SKU5884-5",
+                Amount = 2,
+                Price = 119.39,
+                OrderId = 3
             }
             );
         }

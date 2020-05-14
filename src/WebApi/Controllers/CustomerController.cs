@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Application.Customers.Queries.GetAllCustomersWithOrders;
 using Application.Customers.Queries.GetAllCustomersWithoutOrders;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,7 @@ namespace WebApi.Controllers
         [HttpGet("withorders")]
         public async Task<IActionResult> GetWithOrders()
         {
-            var model = await Mediator.Send(new GetAllCustomerWithoutOrdersQuery());
+            var model = await Mediator.Send(new GetAllCustomerWithOrdersQuery());
 
             return Ok(model);
         }
