@@ -15,10 +15,10 @@ namespace Application.Orders.Commands.AddNewOrder
                 .NotEmpty().WithMessage(ExceptionMessage.DOMAIN_ORDER_ITEM_SKU_INVALID);
 
             RuleFor(e => e.Amount)
-                .LessThanOrEqualTo(0).WithMessage(ExceptionMessage.DOMAIN_ORDER_ITEM_AMOUNT_INVALID);
+                .GreaterThanOrEqualTo(0).WithMessage(ExceptionMessage.DOMAIN_ORDER_ITEM_AMOUNT_INVALID);
 
             RuleFor(e => e.Price)
-                .LessThan(0).WithMessage(ExceptionMessage.DOMAIN_ORDER_ITEM_PRICE_INVALID);
+                .GreaterThan(0.0).WithMessage(ExceptionMessage.DOMAIN_ORDER_ITEM_PRICE_INVALID);
 
         }
     }
