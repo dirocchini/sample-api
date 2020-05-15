@@ -16,13 +16,9 @@ namespace WebApi
         {
             var host = CreateHostBuilder(args).Build();
 
-            //CreateHostBuilder(args).Build().Run();
-
-
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-
                 try
                 {
                     var seeder = services.GetRequiredService<IApplicationSeed>();
@@ -31,7 +27,6 @@ namespace WebApi
                 catch (Exception ex)
                 {
                     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-
                     logger.LogError(ex, "An error occurred while migrating or seeding the database.");
 
                     throw;

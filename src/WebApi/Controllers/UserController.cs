@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Users.Commands.AddNewUser;
-using Application.Users.Queries.GetAuthenticatedUserQuery;
+using Application.Users.Queries.GetAllUsers;
+using Application.Users.Queries.GetAuthenticatedUser;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -30,6 +31,13 @@ namespace WebApi.Controllers
             {
                 return BadRequest(e.Message);
             }
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            return Ok(await Mediator.Send(new GetAllUsersQuery()));
         }
 
         /// <summary>
