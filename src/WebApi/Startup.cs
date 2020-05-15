@@ -3,6 +3,7 @@ using System.Reflection;
 using Application;
 using Application.Common.Interfaces;
 using Domain;
+using Domain.Support.Auth;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -39,6 +40,7 @@ namespace WebApi
             services.AddPersistence(Configuration);
             services.AddApplication(Configuration);
             services.AddDomain(Configuration);
+            services.AddJwt(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
