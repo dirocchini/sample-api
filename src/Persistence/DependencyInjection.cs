@@ -23,10 +23,12 @@ namespace Persistence
             }
             else
             {
-                services.AddDbContext<ApplicationContextSqlServer>();
                 services.AddScoped<IApplicationContext>(provider => provider.GetService<ApplicationContextSqlServer>());
+                services.AddDbContext<ApplicationContextSqlServer>();
             }
 
+
+            services.AddScoped<IApplicationSeed, ApplicationDbSeed>();
 
             return services;
         }
