@@ -7,7 +7,7 @@ using Domain.UnitTests._Common;
 using Shared.Constants;
 using Xunit;
 
-namespace Domain.UnitTests.CustomerTests
+namespace Domain.UnitTests.OrderTests
 {
     public class OrderTests
     {

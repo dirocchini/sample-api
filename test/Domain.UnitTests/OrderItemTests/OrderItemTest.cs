@@ -7,7 +7,7 @@ using ExpectedObjects;
 using Shared.Constants;
 using Xunit;
 
-namespace Domain.UnitTests.CustomerTests
+namespace Domain.UnitTests.OrderItemTests
 {
     public class OrderItemTest
     {
