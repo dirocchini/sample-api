@@ -4,12 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Customers.Commands.AddNewCustomer;
 using Application.Orders.Commands.AddNewOrder;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OrderController : BaseController
     {
         [HttpPost("{customerId}")]

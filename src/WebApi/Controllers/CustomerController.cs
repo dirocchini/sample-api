@@ -2,6 +2,8 @@
 using Application.Customers.Commands.AddNewCustomer;
 using Application.Customers.Queries.GetAllCustomersWithOrders;
 using Application.Customers.Queries.GetAllCustomersWithoutOrders;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 
@@ -9,6 +11,7 @@ namespace WebApi.Controllers
 {
     [Route("customers")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CustomerController : BaseController
     {
         [HttpGet]
