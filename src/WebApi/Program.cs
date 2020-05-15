@@ -15,7 +15,7 @@ namespace WebApi
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    hostContext.Configuration = ConfigurationsExtensions.ConfigureDefaultJson().Build();
+                    hostContext.Configuration = ConfigurationsExtensions.ConfigureDefaultJson(hostContext.HostingEnvironment.EnvironmentName).Build();
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

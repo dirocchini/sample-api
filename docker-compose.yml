@@ -4,6 +4,8 @@ version: '3.4'
 services:
   webapi:
     image: rocchini/sample-api:v1
+    environment:
+        ASPNETCORE_ENVIRONMENT: "Docker"
     build:
       context: .
       dockerfile: Dockerfile

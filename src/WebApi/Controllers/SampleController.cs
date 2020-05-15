@@ -14,7 +14,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return Ok("I'm on baby!");
+            return Ok($"I'm on baby! - Current Environment: {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}");
         }
     }
 }
