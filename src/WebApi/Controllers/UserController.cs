@@ -13,6 +13,11 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class UserController : BaseController
     {
+        /// <summary>
+        /// Add a new user (requires authentication)
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddNewUser([FromBody]AddNewUserCommand request)
         {
@@ -27,6 +32,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Authenticate a user
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("auth")]
         public async Task<IActionResult> Authenticate([FromBody]GetAuthenticatedUserQuery request)
         {

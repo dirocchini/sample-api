@@ -15,11 +15,11 @@ namespace Persistence
 
             services.Configure<DbConnectionConfig>(options => configuration.GetSection("DbConnection").Bind(options));
 
-            services.AddDbContext<ApplicationContextSqlServer>();
-            services.AddScoped<IApplicationContext>(provider => provider.GetService<ApplicationContextSqlServer>());
+            //services.AddDbContext<ApplicationContextSqlServer>();
+            //services.AddScoped<IApplicationContext>(provider => provider.GetService<ApplicationContextSqlServer>());
 
-            //services.AddScoped<IApplicationContext>(provider => provider.GetService<ApplicationContextInMemory>());
-            //services.AddDbContext<ApplicationContextInMemory>(options => options.UseInMemoryDatabase("InMemoryDatabase"));
+            services.AddScoped<IApplicationContext>(provider => provider.GetService<ApplicationContextInMemory>());
+            services.AddDbContext<ApplicationContextInMemory>(options => options.UseInMemoryDatabase("InMemoryDatabase"));
 
             return services;
         }

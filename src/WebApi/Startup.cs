@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Net;
 using System.Reflection;
 using Application;
@@ -11,9 +13,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Persistence;
 using WebApi.Helpers;
+using Microsoft.OpenApi.Models;
 
 namespace WebApi
 {
@@ -41,11 +43,35 @@ namespace WebApi
             services.AddApplication(Configuration);
             services.AddDomain(Configuration);
             services.AddJwt(Configuration);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Sample Api",
+                    Description = "Sample Api using .Net Core 3.1 - CQRS - MS SQL Server - Docker",
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
+
             app.UseExceptionHandler(builder =>
             {
                 builder.Run(async context =>
