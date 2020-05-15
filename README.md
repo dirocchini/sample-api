@@ -1,4 +1,5 @@
 # Sample Api
+![.NET Core](https://github.com/dirocchini/sample-api/workflows/.NET%20Core/badge.svg)
 
 <br/>
 
