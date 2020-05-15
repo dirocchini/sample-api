@@ -37,26 +37,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "dorothy@domain.com",
-                            Name = "Dorothy"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "annmarie@domain.com",
-                            Name = "Annmarie"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "ashley@domain.com",
-                            Name = "Ashley"
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Order", b =>
@@ -81,29 +61,6 @@ namespace Persistence.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedDate = new DateTime(2020, 5, 14, 13, 52, 0, 0, DateTimeKind.Unspecified),
-                            CustomerId = 1,
-                            Description = "Mother's Day buying"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedDate = new DateTime(2020, 3, 11, 16, 45, 0, 0, DateTimeKind.Unspecified),
-                            CustomerId = 1,
-                            Description = "Home office tools"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedDate = new DateTime(2019, 11, 11, 10, 1, 0, 0, DateTimeKind.Unspecified),
-                            CustomerId = 2,
-                            Description = "Desktop upgrade"
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.OrderItem", b =>
@@ -131,40 +88,6 @@ namespace Persistence.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("OrderItems");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Amount = 2,
-                            OrderId = 1,
-                            Price = 2235.3000000000002,
-                            Sku = "SKU23654"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Amount = 5,
-                            OrderId = 1,
-                            Price = 127.33,
-                            Sku = "SKU235884"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Amount = 7,
-                            OrderId = 2,
-                            Price = 17.390000000000001,
-                            Sku = "SKU235884-66"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Amount = 2,
-                            OrderId = 3,
-                            Price = 119.39,
-                            Sku = "SKU5884-5"
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>

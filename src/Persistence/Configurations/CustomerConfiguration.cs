@@ -32,26 +32,6 @@ namespace Persistence.Configurations
                 .WithOne(e => e.Customer)
                 .HasForeignKey(e => e.CustomerId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-
-            builder.HasData(new
-            {
-                Id = 1,
-                Name = "Dorothy",
-                Email = "dorothy@domain.com"
-            },
-            new
-            {
-                Id = 2,
-                Name = "Annmarie",
-                Email = "annmarie@domain.com"
-            }, new
-            {
-                Id = 3,
-                Name = "Ashley",
-                Email = "ashley@domain.com"
-            }
-            );
         }
     }
 }
