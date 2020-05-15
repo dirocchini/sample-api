@@ -16,9 +16,6 @@ namespace Domain.UnitTests.UserTests
     {
         private string _name;
         private string _email;
-        private string _password;
-        private string _salt;
-
 
         public UserTests()
         {
