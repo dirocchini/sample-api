@@ -12,7 +12,10 @@ namespace WebApi.Controllers
     [Route("")]
     public class SampleController : Controller
     {
-        
+        /// <summary>
+        /// Tests if the api is online and returns the environment variable ASPNETCORE_ENVIRONMENT value
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Index()
         {

@@ -15,6 +15,10 @@ namespace WebApi.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OrderController : BaseController
     {
+        /// <summary>
+        /// Add an order to an existing customer (requires authentication)
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("{customerId}")]
         public async Task<IActionResult> AddOrder(int customerId, [FromBody] AddNewOrderCommand request)
         {

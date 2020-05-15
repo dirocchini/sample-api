@@ -14,6 +14,10 @@ namespace WebApi.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CustomerController : BaseController
     {
+        /// <summary>
+        /// Return all customers without their orders (requires authentication)
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetWithOutOrders()
         {
@@ -22,6 +26,10 @@ namespace WebApi.Controllers
             return Ok(model);
         }
 
+        /// <summary>
+        /// Return all customers with their orders (requires authentication)
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("withorders")]
         public async Task<IActionResult> GetWithOrders()
         {
@@ -30,6 +38,11 @@ namespace WebApi.Controllers
             return Ok(model);
         }
 
+        /// <summary>
+        /// Add new customer (requires authentication)
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddNewCustomer([FromBody]AddNewCustomerCommand request)
         {
