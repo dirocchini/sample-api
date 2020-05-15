@@ -14,9 +14,9 @@ services:
     networks: 
       - sampleapinetwork
     depends_on: 
-      - "sqldatabase"
+      - "mssqldb"
 
-  sqldatabase:
+  mssqldb:
     image: mcr.microsoft.com/mssql/server:2019-latest
     environment:
         SA_PASSWORD: "teste@123"
