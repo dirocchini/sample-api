@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Handlers;
 using Application.Common.Interfaces;
 using AutoMapper;
-using Domain.Entities;
 using Domain.Support.Auth;
 using Domain.Support.Encrypt;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Users.Queries.GetAuthenticatedUserQuery
+namespace Application.Users.Queries.GetAuthenticatedUser
 {
     public class GetAuthenticatedUserQuery : IRequest<JsonWebToken>
     {

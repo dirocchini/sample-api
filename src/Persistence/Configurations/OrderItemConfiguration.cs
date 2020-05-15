@@ -28,41 +28,6 @@ namespace Persistence.Configurations
                 .Property(e => e.Price)
                 .IsRequired()
                 .HasColumnType("float");
-
-
-
-            builder.HasData(new
-            {
-                Id = 1,
-                Sku = "SKU23654",
-                Amount = 2,
-                Price = 2235.3,
-                OrderId = 1
-            },
-            new
-            {
-                Id = 2,
-                Sku = "SKU235884",
-                Amount = 5,
-                Price = 127.33,
-                OrderId = 1
-            }, new
-            {
-                Id = 3,
-                Sku = "SKU235884-66",
-                Amount = 7,
-                Price = 17.39,
-                OrderId = 2
-            },
-            new
-            {
-                Id = 4,
-                Sku = "SKU5884-5",
-                Amount = 2,
-                Price = 119.39,
-                OrderId = 3
-            }
-            );
         }
     }
 }
