@@ -8,11 +8,13 @@ namespace Shared.Support.ClassExtensions
 {
     public static class ConfigurationsExtensions
     {
-        public static IConfigurationBuilder ConfigureDefaultJson()
+        public static IConfigurationBuilder ConfigureDefaultJson(string environment)
         {
             return new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                .AddJsonFile($"appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true);
+
         }
     }
 }
