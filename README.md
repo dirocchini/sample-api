@@ -1,5 +1,7 @@
 # Sample Api
-![.NET Core](https://github.com/dirocchini/sample-api/workflows/.NET%20Core/badge.svg) https://rocchini.visualstudio.com/SampleApi/_apis/build/status/dirocchini.sample-api?branchName=master
+![.NET Core](https://github.com/dirocchini/sample-api/workflows/.NET%20Core/badge.svg) 
+[![Build Status](https://rocchini.visualstudio.com/SampleApi/_apis/build/status/dirocchini.sample-api?branchName=master)](https://rocchini.visualstudio.com/SampleApi/_build/latest?definitionId=1&branchName=master)
+
 <br/>
 
 This is a sample api using ASP.NET Core 3.1, CQRS with MediatR, Microsoft Sql Server or In Memory and a lot of fun things like swagger and JWT, following the principles of Clean Architecture. 
