@@ -20,5 +20,8 @@
         public static string DOMAIN_USER_NAME_INVALID = "User name should not be null or empty";
         public static string DOMAIN_USER_EMAIL_INVALID = "User email should not be null or empty";
         public static string DOMAIN_USER_PASSWORD_INVALID = "User password should not be null or empty";
+        public static string DOMAIN_USER_EMAIL_EXISTS = "User with this email already exists";
+        public static string DOMAIN_USER_EMAIL_FORMAT_INVALID = "User email should be a valid format";
+
     }
 }

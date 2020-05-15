@@ -1,7 +1,7 @@
 ﻿using System;
 using Domain.Interfaces;
+using Domain.Support.Encrypt;
 using Shared.Constants;
-using Shared.Support.Encrypt;
 
 namespace Domain.Entities
 {

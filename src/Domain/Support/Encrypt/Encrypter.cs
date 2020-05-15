@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace Domain.Support.Encrypt
 {
-    public class Encrypter : Domain.Support.Encrypt.IEncrypter
+    public class Encrypter : IEncrypter
     {
         private static readonly int SaltSize = 40;
         private static readonly int DeriveBytesIterationsCount = 10000;
