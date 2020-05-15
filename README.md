@@ -38,3 +38,7 @@ When you run the application the database will be automatically created (if nece
 
 If you use docker you don't need to change any configuration in sql server settings
 
+### Testing
+You can check all API endpoints at http://localhost:8080/swagger. Thanks [Swagger](https://github.com/swagger-api)
+
+There is a file **simple-api.postman_collection.json** containing all possible consuming api endpoint, with data, for using with Postman v7.24.0.
