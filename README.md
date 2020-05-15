@@ -1,5 +1,5 @@
 # Sample Api
-![.NET Core](https://github.com/dirocchini/sample-api/workflows/.NET%20Core/badge.svg)
+![.NET Core](https://github.com/dirocchini/sample-api/workflows/.NET%20Core/badge.svg) [![Build Status](https://rocchini.visualstudio.com/SampleApi/_apis/build/status/dirocchini.sample-api?branchName=master)](https://rocchini.visualstudio.com/SampleApi/_build/latest?definitionId=1&branchName=master)
 
 <br/>
 
