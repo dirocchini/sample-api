@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "41bdbc5a-9251-4ea3-8317-58946acfbcb4",
-		"name": "simple-api",
+		"_postman_id": "a0bdbcb5-422d-48b5-b094-124090246270",
+		"name": "simple-api docker",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -23,7 +23,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU4OTU4MDYyMCwiZXhwIjoxNTg5NTg0MjIwLCJ1bmlxdWVfbmFtZSI6MX0.mR5erJuMVnXRrmw8bUwfxA5OIddFPsY8XS71RB8qOh0",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU4OTU4OTMyOSwiZXhwIjoxNTg5NTkyOTI5LCJ1bmlxdWVfbmFtZSI6MX0.fPkrCSkAOK1d2D2tIN7eGM1Qc_UAeuHGlW7EAgxy1LM",
 								"type": "text"
 							}
 						],
@@ -37,12 +37,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/customers",
+							"raw": "http://localhost:8080/customers",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "8080",
 							"path": [
 								"customers"
 							]
@@ -65,7 +65,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU4OTU3ODk5MywiZXhwIjoxNTg5NTgyNTkzLCJ1bmlxdWVfbmFtZSI6MX0.mAtXTEP1pexqOpwwWr8c9YhBuWR6eNRVGVe8RqIHGlQ",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU4OTU4NzY2MywiZXhwIjoxNTg5NTkxMjYzLCJ1bmlxdWVfbmFtZSI6MX0.jWV48s_Dte-EX0UO-w3VjsIgI7z5x1G28m_7u4n_cFc",
 								"type": "text"
 							}
 						],
@@ -79,12 +79,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/customers/withorders",
+							"raw": "http://localhost:8080/customers/withorders",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "8080",
 							"path": [
 								"customers",
 								"withorders"
@@ -105,7 +105,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU4OTU4MDUyOSwiZXhwIjoxNTg5NTg0MTI5LCJ1bmlxdWVfbmFtZSI6MX0.Od5mdujDEy9AAQziMgCQiQDs-nx-wcMn38PfGF4opM4",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU4OTU4OTcxMCwiZXhwIjoxNTg5NTkzMzEwLCJ1bmlxdWVfbmFtZSI6MX0.6i3fBgMC0OXxoeULfMs1u5q5C21pSq50nAgiVNYHt6k",
 								"type": "text"
 							}
 						],
@@ -119,12 +119,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/customers",
+							"raw": "http://localhost:8080/customers",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "8080",
 							"path": [
 								"customers"
 							]
@@ -150,8 +150,8 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU4OTU4MDMzNCwiZXhwIjoxNTg5NTgzOTM0LCJ1bmlxdWVfbmFtZSI6MX0.sD19ptqHKSJoHbavuC5eXG4kp8lj4YHphSZGJUNMebc",
-								"type": "text"
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU4OTU4OTcxMCwiZXhwIjoxNTg5NTkzMzEwLCJ1bmlxdWVfbmFtZSI6MX0.6i3fBgMC0OXxoeULfMs1u5q5C21pSq50nAgiVNYHt6k"
 							}
 						],
 						"body": {
@@ -164,15 +164,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/order/4",
+							"raw": "http://localhost:8080/order/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "8080",
 							"path": [
 								"order",
-								"4"
+								"2"
 							]
 						}
 					},
@@ -196,6 +196,11 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU4OTU4OTcxMCwiZXhwIjoxNTg5NTkzMzEwLCJ1bmlxdWVfbmFtZSI6MX0.6i3fBgMC0OXxoeULfMs1u5q5C21pSq50nAgiVNYHt6k",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -208,12 +213,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/user",
+							"raw": "http://localhost:8080/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "8080",
 							"path": [
 								"user"
 							]
@@ -225,7 +230,13 @@
 					"name": "add-new-user",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU4OTU5MDQ0MSwiZXhwIjoxNTg5NTk0MDQxLCJ1bmlxdWVfbmFtZSI6MX0.mrWo5p8TsKdWaYiftqIeyl6onc3V6Bd4nzdBUxM_ENI",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"name\" : \"Diego Roquini\",\n\t\"email\" : \"roquinni@gmail.com\",\n\t\"password\" : \"123\"\n}",
@@ -236,12 +247,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/user",
+							"raw": "http://localhost:8080/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "8080",
 							"path": [
 								"user"
 							]
@@ -264,12 +275,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/user/auth",
+							"raw": "http://localhost:8080/user/auth",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "8080",
 							"path": [
 								"user",
 								"auth"
@@ -310,12 +321,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000",
+					"raw": "http://localhost:8080",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000"
+					"port": "8080"
 				}
 			},
 			"response": []
