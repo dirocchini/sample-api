@@ -15,7 +15,7 @@ This is a sample api using ASP.NET Core 3.1, CQRS with MediatR, Microsoft Sql Se
 * Swagger
 * xUnit, Moq, Expected Objects, Bogus
 
-### Database Configuration
+## Database Configuration
 This solution is configured to use a Microsoft sql database by default. 
 
 If you would like to use In Memory, there is a key to be updated in **WebApi/appsettings.{ENVIRONMENT}.json** as follows:
@@ -32,13 +32,13 @@ When you run the application the database will be automatically created (if nece
 ## Getting Started
 The easiest way to get started is to install Docker in your computer and:
 
-1 - Navigate to root folder
- 1.1 - Run the command `docker-compose run -d` << this will setup the environment using Microsoft Sql Server
- 1.2 - Run the command `docker-compose -f docker-compose-in-mem.yml up -d` << this will setup the environment using in memory database
-2 - Docker compose will download all necessary components and, after all...
-3 - Just access http://localhost:8080 to check if it's working fine
+1. Navigate to root folder
+ 1.1. Run the command `docker-compose run -d` << this will setup the environment using Microsoft Sql Server
+ 1.2. Run the command `docker-compose -f docker-compose-in-mem.yml up -d` << this will setup the environment using in memory database
+2. Docker compose will download all necessary components and, after all...
+3. Just access http://localhost:8080 to check if it's working fine
 
-### Testing
+## Testing
 You can check all API endpoints at http://localhost:8080/swagger. Thanks [Swagger](https://github.com/swagger-api)
 
 There is a file **simple-api.postman_collection.json** containing all possible consuming api endpoint, with data, for using with Postman v7.24.0.
