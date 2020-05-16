@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Application.Users.Commands.AddNewUser;
 using Application.Users.Queries.GetAllUsers;
 using Application.Users.Queries.GetAuthenticatedUser;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -35,6 +37,7 @@ namespace WebApi.Controllers
 
 
         [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> GetAllUsers()
         {
             return Ok(await Mediator.Send(new GetAllUsersQuery()));
