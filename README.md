@@ -15,30 +15,34 @@ This is a sample api using ASP.NET Core 3.1, CQRS with MediatR, Microsoft Sql Se
 * Swagger
 * xUnit, Moq, Expected Objects, Bogus
 
-## Getting Started
-The easiest way to get started is to install Docker in your computer and:
-
-1. Navigate to root folder
-2. Run the command `docker-compose run -d`
-3. It will download all necessary components and, after all...
-4. Just access http://localhost:8080 to check if it's working fine
-
 ### Database Configuration
-This solution is configured to use a in-memory database by default. This ensures that all users will be able to run the solution without needing to set up additional infrastructure (e.g. SQL Server).
+This solution is configured to use a Microsoft sql database by default. 
 
-If you would like to use SQL Server, you will need to update **WebApi/appsettings.{ENVIRONMENT}.json** as follows:
+If you would like to use In Memory, there is a key to be updated in **WebApi/appsettings.{ENVIRONMENT}.json** as follows:
 
 ```json
-  "UseInMemoryDatabase": false,
+  "UseInMemoryDatabase": true,
 ```
+(This ensures that all users will be able to run the solution without needing to set up additional infrastructure)
 
 Verify that the **DbConnection** connection details within **appsettings.{ENVIRONMENT}.json** points to a valid SQL Server instance. 
 
 When you run the application the database will be automatically created (if necessary) and the latest migrations will be applied.
 
-If you use docker you don't need to change any configuration in sql server settings
+## Getting Started
+The easiest way to get started is to install Docker in your computer and:
+
+1 - Navigate to root folder
+ 1.1 - Run the command `docker-compose run -d` << this will setup the environment using Microsoft Sql Server
+ 1.2 - Run the command `docker-compose -f docker-compose-in-mem.yml up -d` << this will setup the environment using in memory database
+2 - Docker compose will download all necessary components and, after all...
+3 - Just access http://localhost:8080 to check if it's working fine
 
 ### Testing
 You can check all API endpoints at http://localhost:8080/swagger. Thanks [Swagger](https://github.com/swagger-api)
 
 There is a file **simple-api.postman_collection.json** containing all possible consuming api endpoint, with data, for using with Postman v7.24.0.
+
+If you need, a initial user to authenticate is created. email: admin@domain.com and password: 123
+
+Most of api endpoints requires a token authentication (supplied by http://localhost:5000/user/auth endpoint). Add this token in you header request (see postman file for more details).
