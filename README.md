@@ -43,6 +43,6 @@ You can check all API endpoints at http://localhost:8080/swagger. Thanks [Swagge
 
 There is a file **simple-api.postman_collection.json** containing all possible consuming api endpoint, with data, for using with Postman v7.24.0.
 
-If you need, a initial user to authenticate is created. email: admin@domain.com and password: 123
+A initial user to authenticate is provider under the following credentials email: admin@domain.com and password: 123
 
 Most of api endpoints requires a token authentication (supplied by http://localhost:5000/user/auth endpoint). Add this token in you header request (see postman file for more details).
