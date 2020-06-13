@@ -1,6 +1,7 @@
 # Sample Api
 ![.NET Core](https://github.com/dirocchini/sample-api/workflows/.NET%20Core/badge.svg) 
 [![Build Status](https://rocchini.visualstudio.com/SampleApi/_apis/build/status/dirocchini.sample-api?branchName=master)](https://rocchini.visualstudio.com/SampleApi/_build/latest?definitionId=1&branchName=master)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dirocchini_sample-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=dirocchini_sample-api)
 
 <br/>
 
