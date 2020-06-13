@@ -15,3 +15,24 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sample-api'
+    organization: 'dirocchini'
+    scannerMode: 'MSBuild'
+    projectKey: 'dirocchini_sample-api'
+    projectName: 'sample-api'
+
+
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '600'
+
+
+
