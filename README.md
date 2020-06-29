@@ -30,7 +30,7 @@ Verify that the **DbConnection** connection details within **appsettings.{ENVIRO
 
 When you run the application the database will be automatically created (if necessary) and the latest migrations will be applied.
 
-## Getting Started
+## Getting Started!
 The easiest way to get started is to install Docker in your computer and:
 
 1. Navigate to root folder, same where sample-api.sln is located.
