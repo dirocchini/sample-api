@@ -13,9 +13,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Persistence;
 using WebApi.Helpers;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using Serilog.Sinks.Elasticsearch;
 
 namespace WebApi
 {
@@ -58,11 +61,20 @@ namespace WebApi
                 c.IncludeXmlComments(xmlPath);
             });
 
-            
+
+            var elastic = Configuration["ElasticConfiguration:Uri"];
+
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elastic))
+                {
+                    AutoRegisterTemplate = true
+                }).CreateLogger();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseSwagger();
 
@@ -88,6 +100,8 @@ namespace WebApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            loggerFactory.AddSerilog();
 
             app.UseEndpoints(endpoints =>
             {

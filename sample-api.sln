@@ -30,6 +30,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{E4AE86D3-6D4A-423E-9B19-FE06219303CD}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose-in-mem.yml = docker-compose-in-mem.yml
+		docker-compose-kibana.yml = docker-compose-kibana.yml
 		docker-compose.yml = docker-compose.yml
 		README.md = README.md
 	EndProjectSection
