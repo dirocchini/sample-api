@@ -40,7 +40,7 @@ namespace Application.Users.Queries.GetAuthenticatedUser
                 if (!user.ValidatePassword(request.Password, _encrypter))
                     throw new ArgumentException($"Incorrect password provided");
 
-                _logger.LogInformation($"User {user} loggedin");
+                _logger.LogInformation($"User {user.Name} / {user.Email} logged in");
 
                 return _jwtHandler.Create(user.Id);
             }

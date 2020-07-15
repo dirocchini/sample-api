@@ -27,9 +27,18 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            _logger.LogInformation("eita meu primeiro log loco");
-            _logger.LogError("erro xpto");
-            return Ok($"I'm on baby! - Current Environment: {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}");
+            try
+            {
+                var i = 0;
+                var j = 5 / i;
+                _logger.LogInformation("eita meu primeiro log loco");
+                return Ok($"I'm on baby! - Current Environment: {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}");
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e,"erro xpto");
+                return BadRequest("erro proposital");
+            }
         }
     }
 }

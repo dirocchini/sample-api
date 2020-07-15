@@ -18,6 +18,7 @@ using Persistence;
 using WebApi.Helpers;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Serilog.Events;
 using Serilog.Sinks.Elasticsearch;
 
 namespace WebApi
@@ -63,13 +64,27 @@ namespace WebApi
 
 
             var elastic = Configuration["ElasticConfiguration:Uri"];
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile(
+                    $"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
+                    optional: true)
+                .Build();
 
             Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
+                .Enrich.WithMachineName()
+                .WriteTo.Console()
                 .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elastic))
                 {
                     AutoRegisterTemplate = true
-                }).CreateLogger();
+                })
+                .Enrich.WithProperty("Environment", environment)
+                .CreateLogger();
 
         }
 
@@ -97,6 +112,9 @@ namespace WebApi
                     }
                 });
             });
+
+            app.UseSerilogRequestLogging();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -107,6 +125,8 @@ namespace WebApi
             {
                 endpoints.MapControllers();
             });
+
+            
         }
     }
 }
