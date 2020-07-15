@@ -15,6 +15,7 @@ This is a sample api using ASP.NET Core 3.1, CQRS with MediatR, Microsoft Sql Se
 * FluentValidation
 * Swagger
 * xUnit, Moq, Expected Objects, Bogus
+* Kibana, Elastic Search and Serilog
 
 ## Database Configuration
 This solution is configured to use a Microsoft sql database by default. 
