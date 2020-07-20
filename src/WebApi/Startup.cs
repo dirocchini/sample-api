@@ -48,19 +48,21 @@ namespace WebApi
             services.AddDomain(Configuration);
             services.AddJwt(Configuration);
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "Sample Api",
-                    Description = "Sample Api using .Net Core 3.1 - CQRS - MS SQL Server - Docker",
-                });
+            services.AddSwagger();
 
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
-            });
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo
+            //    {
+            //        Version = "v1",
+            //        Title = "Sample Api",
+            //        Description = "Sample Api using .Net Core 3.1 - CQRS - MS SQL Server - Docker",
+            //    });
+
+            //    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            //    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            //    c.IncludeXmlComments(xmlPath);
+            //});
 
 
             var elastic = Configuration["ElasticConfiguration:Uri"];
