@@ -15,6 +15,7 @@ This is a sample api using ASP.NET Core 3.1, CQRS with MediatR, Microsoft Sql Se
 * FluentValidation
 * Swagger
 * xUnit, Moq, Expected Objects, Bogus
+* Kibana, Elastic Search and Serilog
 
 ## Database Configuration
 This solution is configured to use a Microsoft sql database by default. 
@@ -36,8 +37,17 @@ The easiest way to get started is to install Docker in your computer and:
 1. Navigate to root folder, same where sample-api.sln is located.
    - Run the command `docker-compose run -d` << this will setup the environment using Microsoft Sql Server
    - Run the command `docker-compose -f docker-compose-in-mem.yml up -d` << this will setup the environment using in memory database
-2. Docker compose will download all necessary components and, after all...
-3. Just access http://localhost:8080 to check if it's working fine
+3. Both docker-compose will use kibana and elastic search for loggin purpose (use the routes /, /error and /user/auth to test it)
+4. Docker compose will download all necessary components
+5. Navigate to http://localhost:8080/, you should receive a message like <<I'm on baby! - Current Environment: DockerInMem (or Docker)>>
+6. Wait until will be able to acess kibana on http://localhost:5601 (kind of 1 or 2 minutes)
+7. Click on Explore on my own (it might not show, just jump it to next step)
+8. Navigate to http://localhost:5601/app/kibana#/management/kibana/index_patterns and Create index pattern. Define your index name equals to logstash-* 
+9. Configure your Time Filter Field Name as @timestamp and continue
+10. Just access http://localhost:8080 to check if it's working fine
+11. Use http://localhost:8080/error to add some error data into kibana
+
+ps.: if you want to run locally, without docker, you must run `docker-compose -f docker-compose-kibana.yml up -d` to configure both kibana and elastic search
 
 ## Testing
 You can check all API endpoints at http://localhost:8080/swagger. Thanks [Swagger](https://github.com/swagger-api)

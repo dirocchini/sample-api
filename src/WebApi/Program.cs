@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Persistence;
+using Serilog;
 using Shared.Support.ClassExtensions;
 
 namespace WebApi
@@ -39,6 +40,7 @@ namespace WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .ConfigureServices((hostContext, services) =>
                 {
                     hostContext.Configuration = ConfigurationsExtensions.ConfigureDefaultJson(hostContext.HostingEnvironment.EnvironmentName).Build();

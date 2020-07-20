@@ -8,6 +8,8 @@ using Application.Users.Queries.GetAuthenticatedUser;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
 
 namespace WebApi.Controllers
 
@@ -16,13 +18,20 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class UserController : BaseController
     {
+        private readonly ILogger _logger;
+
+        public UserController(ILogger<UserController> logger)
+        {
+            this._logger = logger;
+        }
+
         /// <summary>
         /// Add a new user (requires authentication)
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> AddNewUser([FromBody]AddNewUserCommand request)
+        public async Task<IActionResult> AddNewUser([FromBody] AddNewUserCommand request)
         {
             try
             {
@@ -49,15 +58,20 @@ namespace WebApi.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("auth")]
-        public async Task<IActionResult> Authenticate([FromBody]GetAuthenticatedUserQuery request)
+        public async Task<IActionResult> Authenticate([FromBody] GetAuthenticatedUserQuery request)
         {
             try
             {
+                _logger.LogInformation($"Trying to authenticate user {request.Email}");
+                
                 var response = await Mediator.Send(request);
+
+                _logger.LogInformation($"User {request.Email} logged in");
                 return Ok(response);
             }
             catch (Exception e)
             {
+                _logger.LogError(e, "error on authentication method");
                 return BadRequest(e.Message);
             }
         }

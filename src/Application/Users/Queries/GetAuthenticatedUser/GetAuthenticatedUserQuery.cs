@@ -8,6 +8,7 @@ using Domain.Support.Auth;
 using Domain.Support.Encrypt;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Users.Queries.GetAuthenticatedUser
 {
@@ -21,11 +22,13 @@ namespace Application.Users.Queries.GetAuthenticatedUser
         {
             private readonly IEncrypter _encrypter;
             private readonly IJwtHandler _jwtHandler;
+            private readonly ILogger<Handler> _logger;
 
-            public Handler(IApplicationContext context, IMapper mapper, IEncrypter encrypter, IJwtHandler jwtHandler) : base(context, mapper)
+            public Handler(IApplicationContext context, IMapper mapper, IEncrypter encrypter, IJwtHandler jwtHandler, ILogger<Handler> logger) : base(context, mapper)
             {
                 _encrypter = encrypter;
                 _jwtHandler = jwtHandler;
+                _logger = logger;
             }
 
             public async Task<JsonWebToken> Handle(GetAuthenticatedUserQuery request, CancellationToken cancellationToken)
@@ -37,6 +40,7 @@ namespace Application.Users.Queries.GetAuthenticatedUser
                 if (!user.ValidatePassword(request.Password, _encrypter))
                     throw new ArgumentException($"Incorrect password provided");
 
+                _logger.LogInformation($"User {user.Name} / {user.Email} logged in");
 
                 return _jwtHandler.Create(user.Id);
             }

@@ -5,9 +5,42 @@ services:
   webapi:
     image: rocchini/sample-api:v1
     environment:
-        ASPNETCORE_ENVIRONMENT: "DockerInMem"
+      ASPNETCORE_ENVIRONMENT: "DockerInMem"
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - 8080:80
+    networks: 
+      - sampleapinetwork
+
+  elasticsearch:
+   image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+   volumes:
+     - ./sampledata:/usr/share/elasticsearch/data   
+   container_name: elasticsearch
+   ports:
+     - "9200:9200"
+   environment:
+     - bootstrap.memory_lock=true
+     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+     - discovery.type=single-node
+   networks: 
+      - sampleapinetwork
+      
+  kibana:
+   image: docker.elastic.co/kibana/kibana:7.5.1
+   container_name: kibana
+   ports:
+    - "5601:5601"
+   depends_on:
+    - elasticsearch
+   networks: 
+      - sampleapinetwork
+
+volumes:
+  sampledata:    
+
+networks: 
+  sampleapinetwork:
+    driver: bridge
