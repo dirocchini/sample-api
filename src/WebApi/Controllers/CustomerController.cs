@@ -5,7 +5,6 @@ using Application.Customers.Queries.GetAllCustomersWithoutOrders;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.WebUtilities;
 
 namespace WebApi.Controllers
 {

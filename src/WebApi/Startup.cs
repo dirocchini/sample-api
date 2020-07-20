@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Net;
 using System.Reflection;
 using Application;
@@ -16,10 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Persistence;
 using WebApi.Helpers;
-using Microsoft.OpenApi.Models;
 using Serilog;
-using Serilog.Events;
-using Serilog.Sinks.Elasticsearch;
 
 namespace WebApi
 {
@@ -50,22 +46,6 @@ namespace WebApi
 
             services.AddSwagger();
 
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo
-            //    {
-            //        Version = "v1",
-            //        Title = "Sample Api",
-            //        Description = "Sample Api using .Net Core 3.1 - CQRS - MS SQL Server - Docker",
-            //    });
-
-            //    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            //    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            //    c.IncludeXmlComments(xmlPath);
-            //});
-
-
-            var elastic = Configuration["ElasticConfiguration:Uri"];
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -74,19 +54,7 @@ namespace WebApi
                     optional: true)
                 .Build();
 
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-                .Enrich.FromLogContext()
-                .Enrich.WithMachineName()
-                .WriteTo.Console()
-                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elastic))
-                {
-                    AutoRegisterTemplate = true
-                })
-                .Enrich.WithProperty("Environment", environment)
-                .CreateLogger();
+            services.AddKibana(Configuration, environment);
 
         }
 

@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.Elasticsearch;
 
 namespace WebApi
 {
@@ -50,6 +50,26 @@ namespace WebApi
                 c.IncludeXmlComments(xmlPath);
             });
 
+
+            return services;
+        }
+
+        public static IServiceCollection AddKibana(this IServiceCollection services, IConfiguration configuration, string environment)
+        {
+            var elastic = configuration["ElasticConfiguration:Uri"];
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+                .Enrich.FromLogContext()
+                .Enrich.WithMachineName()
+                .WriteTo.Console()
+                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elastic))
+                {
+                    AutoRegisterTemplate = true
+                })
+                .Enrich.WithProperty("Environment", environment)
+                .CreateLogger();
 
             return services;
         }
