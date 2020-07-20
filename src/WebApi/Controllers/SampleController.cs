@@ -29,15 +29,30 @@ namespace WebApi.Controllers
         {
             try
             {
-                var i = 0;
-                var j = 5 / i;
-                _logger.LogInformation("eita meu primeiro log loco");
+                _logger.LogInformation("Access to /index");
                 return Ok($"I'm on baby! - Current Environment: {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}");
             }
             catch (Exception e)
             {
-                _logger.LogError(e,"erro xpto");
-                return BadRequest("erro proposital");
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("error")]
+        public IActionResult SimulateError()
+        {
+            try
+            {
+                throw new Exception("This is an expected error");
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e, "this is a _logger.LogInformation");
+                _logger.LogError(e, "this is a _logger.LogError");
+                _logger.LogCritical(e, "this is a _logger.LogCritical");
+                _logger.LogDebug(e, "this is a _logger.LogDebug");
+                _logger.LogWarning(e, "this is a _logger.LogWarning");
+                return BadRequest("known error");
             }
         }
     }
