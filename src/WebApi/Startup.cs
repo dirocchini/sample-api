@@ -45,17 +45,7 @@ namespace WebApi
             services.AddJwt(Configuration);
 
             services.AddSwagger();
-
-            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile(
-                    $"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
-                    optional: true)
-                .Build();
-
-            services.AddKibana(Configuration, environment);
-
+            services.AddKibana(Configuration, Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
