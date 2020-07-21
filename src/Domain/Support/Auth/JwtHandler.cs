@@ -11,14 +11,15 @@ namespace Domain.Support.Auth
     {
         private readonly JwtSecurityTokenHandler _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
         private readonly JwtOptions _options;
-        private readonly SecurityKey _issuerSigningKey;
-        private readonly SigningCredentials _signingCredentials;
         private readonly JwtHeader _jwtHeader;
-        private readonly TokenValidationParameters _tokenValidationParameters;
 
 
         public JwtHandler(IOptions<JwtOptions> options)
         {
+            SigningCredentials _signingCredentials;
+            TokenValidationParameters _tokenValidationParameters;
+            SecurityKey _issuerSigningKey;
+
             _options = options.Value;
             _issuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.SecretKey));
             _signingCredentials = new SigningCredentials(_issuerSigningKey, SecurityAlgorithms.HmacSha256);

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FluentValidation;
+﻿using FluentValidation;
 using Shared.Constants;
 
 namespace Application.Customers.Commands.AddNewCustomer

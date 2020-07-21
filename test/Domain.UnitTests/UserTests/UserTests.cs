@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Bogus;
 using Domain.Entities;
-using Domain.Interfaces;
 using Domain.UnitTests._Builders;
 using Domain.UnitTests._Common;
 using ExpectedObjects;

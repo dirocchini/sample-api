@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Application.Customers.Commands.AddNewCustomer;
+﻿using System.Threading.Tasks;
 using Application.Orders.Commands.AddNewOrder;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
