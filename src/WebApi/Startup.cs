@@ -45,7 +45,7 @@ namespace WebApi
             services.AddJwt(Configuration);
 
             services.AddSwagger();
-            services.AddKibana(Configuration, Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
+            services.AddSerilog(Configuration, Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
