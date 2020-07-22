@@ -23,7 +23,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                _logger.LogInformation("Access to /index");
+                _logger.LogInformation("I'm on baby! - Current Environment: {Environment}",  Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
                 return Ok($"I'm on baby! - Current Environment: {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}");
             }
             catch (Exception e)

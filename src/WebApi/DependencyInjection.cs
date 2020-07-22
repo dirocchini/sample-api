@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Serilog.Core;
 using Serilog.Events;
 using Serilog.Sinks.Elasticsearch;
 
@@ -54,15 +55,21 @@ namespace WebApi
             return services;
         }
 
-        public static IServiceCollection AddKibana(this IServiceCollection services, IConfiguration configuration, string environment)
+        public static IServiceCollection AddSerilog(this IServiceCollection services, IConfiguration configuration, string environment)
         {
             var elastic = configuration["ElasticConfiguration:Uri"];
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.Development.json")
+                .Build();
+
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-                .Enrich.FromLogContext()
-                .Enrich.WithMachineName()
+                .ReadFrom.Configuration(config)
+                //.MinimumLevel.Debug()
+                //.MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                //.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+                //.Enrich.FromLogContext()
+                //.Enrich.WithMachineName()
                 .WriteTo.Console()
                 .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elastic))
                 {

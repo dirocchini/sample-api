@@ -60,11 +60,11 @@ namespace WebApi.Controllers
         {
             try
             {
-                _logger.LogInformation($"Trying to authenticate user {request.Email}");
+                _logger.LogInformation("Trying to authenticate user {userEmail}", request.Email);
                 
                 var response = await Mediator.Send(request);
 
-                _logger.LogInformation($"User {request.Email} logged in");
+                _logger.LogInformation("User {userEmail} logged in", request.Email);
                 return Ok(response);
             }
             catch (Exception e)

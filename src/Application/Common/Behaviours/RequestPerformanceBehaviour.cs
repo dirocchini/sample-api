@@ -26,10 +26,14 @@ namespace Application.Common.Behaviours
 
             _timer.Stop();
 
-            if (_timer.ElapsedMilliseconds > 500)
+            const int maxRequestTimeMilliseconds = 30;
+
+            if (_timer.ElapsedMilliseconds > maxRequestTimeMilliseconds)
             {
                 var name = typeof(TRequest).Name;
-                _logger.LogWarning($"Long Running Request: {name} ({_timer.ElapsedMilliseconds} milliseconds) {request}");
+                _logger.LogWarning("Long Running Request Detected (over {maxRequestMillisecondsAllowed}): Message -> {requestName}, Duration -> ({elapsedMilliseconds} milliseconds), Request -> {request}",
+                    maxRequestTimeMilliseconds, name, _timer.ElapsedMilliseconds, request);
+
             }
 
             return response;
