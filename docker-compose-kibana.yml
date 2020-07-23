@@ -5,7 +5,7 @@ services:
   elasticsearch:
    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
    volumes:
-     - ./esdata:/usr/share/elasticsearch/data   
+     - ./kibana-data:/usr/share/elasticsearch/data   
    container_name: elasticsearch
    ports:
      - "9200:9200"
@@ -23,4 +23,4 @@ services:
     - elasticsearch
     
 volumes:
-  esdata:    
+  kibana-data:    
