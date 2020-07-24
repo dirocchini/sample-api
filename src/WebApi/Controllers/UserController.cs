@@ -31,15 +31,8 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewUser([FromBody] AddNewUserCommand request)
         {
-            try
-            {
-                var response = await Mediator.Send(request);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            var response = await Mediator.Send(request);
+            return Ok(response);
         }
 
 
@@ -58,20 +51,12 @@ namespace WebApi.Controllers
         [HttpPost("auth")]
         public async Task<IActionResult> Authenticate([FromBody] GetAuthenticatedUserQuery request)
         {
-            try
-            {
-                _logger.LogInformation("Trying to authenticate user {userEmail}", request.Email);
-                
-                var response = await Mediator.Send(request);
+            _logger.LogInformation("Trying to authenticate user {userEmail}", request.Email);
 
-                _logger.LogInformation("User {userEmail} logged in", request.Email);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e, "error on authentication method");
-                return BadRequest(e.Message);
-            }
+            var response = await Mediator.Send(request);
+
+            _logger.LogInformation("User {userEmail} logged in", request.Email);
+            return Ok(response);
         }
     }
 }

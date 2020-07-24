@@ -6,6 +6,7 @@ using AutoMapper;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Shared.Exceptions;
 
 namespace Application.Customers.Commands.AddNewCustomer
 {
@@ -26,7 +27,7 @@ namespace Application.Customers.Commands.AddNewCustomer
                     c => c.Email.ToLower().Trim() == request.Email.ToLower().Trim(), cancellationToken);
 
                 if (customer != null)
-                    return $"Customer email ({request.Email}) already registered";
+                    throw new CustomerAlreadyRegisteredException($"Customer email ({request.Email}) already registered");
 
                 await context.Customers.AddAsync(new Customer(request.Name, request.Email), cancellationToken);
                 await context.SaveChangesAsync(cancellationToken);

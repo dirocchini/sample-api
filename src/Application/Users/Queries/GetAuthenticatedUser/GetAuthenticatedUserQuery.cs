@@ -9,6 +9,7 @@ using Domain.Support.Encrypt;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Shared.Exceptions;
 
 namespace Application.Users.Queries.GetAuthenticatedUser
 {
@@ -35,10 +36,10 @@ namespace Application.Users.Queries.GetAuthenticatedUser
             {
                 var user = await context.Users.FirstOrDefaultAsync(u => u.Email.ToLower().Trim() == request.Email.ToLower().Trim());
                 if (user == null)
-                    throw new ArgumentException($"User {request.Email} not found");
+                    throw new UserNotFoundException($"User {request.Email} not found");
 
                 if (!user.ValidatePassword(request.Password, _encrypter))
-                    throw new ArgumentException($"Incorrect password provided");
+                    throw new IncorrectPasswordException($"Incorrect password provided");
 
                 _logger.LogInformation($"User {user.Name} / {user.Email} logged in");
 

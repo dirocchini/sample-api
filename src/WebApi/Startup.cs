@@ -3,6 +3,7 @@ using System.Net;
 using System.Reflection;
 using Application;
 using Application.Common.Interfaces;
+using Application.Notifications;
 using Domain;
 using Domain.Support.Auth;
 using FluentValidation.AspNetCore;
@@ -10,12 +11,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Persistence;
 using WebApi.Helpers;
 using Serilog;
+using WebApi.Filters.Notifications;
 
 namespace WebApi
 {
@@ -46,6 +49,11 @@ namespace WebApi
 
             services.AddSwagger();
             services.AddSerilog(Configuration, Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
+
+            services.AddScoped<NotificationContext>();
+
+            services.AddMvc(options => options.Filters.Add<NotificationFilter>())
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

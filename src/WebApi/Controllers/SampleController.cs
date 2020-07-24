@@ -21,15 +21,8 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            try
-            {
-                _logger.LogInformation("I'm on baby! - Current Environment: {Environment}",  Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
-                return Ok($"I'm on baby! - Current Environment: {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}");
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            _logger.LogInformation("I'm on baby! - Current Environment: {Environment}", Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
+            return Ok($"I'm on baby! - Current Environment: {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}");
         }
 
         [HttpGet("error")]
