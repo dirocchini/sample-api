@@ -43,11 +43,15 @@ namespace WebApi
                 });
 
             services.AddPersistence(Configuration);
+
             services.AddApplication(Configuration);
+
             services.AddDomain(Configuration);
+
             services.AddJwt(Configuration);
 
             services.AddSwagger();
+
             services.AddSerilog(Configuration, Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
 
             services.AddScoped<NotificationContext>();
@@ -87,14 +91,10 @@ namespace WebApi
 
             app.UseAuthorization();
 
-            loggerFactory.AddSerilog();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
-            
         }
     }
 }
